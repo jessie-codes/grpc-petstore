@@ -3,9 +3,10 @@ syntax = "proto3";
 package petstore;
 
 enum Status {
-  AVAILABLE = 0;
-  PENDING = 1;
-  SOLD = 3;
+  UNKNOWN = 1;
+  AVAILABLE = 2;
+  PENDING = 3;
+  SOLD = 4;
 }
 
 message Pet {
