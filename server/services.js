@@ -1,4 +1,5 @@
 const { status } = require('grpc')
+const grpc = require('@grpc/grpc-js')
 const db = require('../db')
 
 const getPets = (call, callback) => {
@@ -8,10 +9,7 @@ const getPets = (call, callback) => {
 const getPet = (call, callback) => {
   const pet = db.getPet(call.request)
   if (!pet) {
-    const err = {
-      message: 'Pet Not Found',
-      status: status.NOT_FOUND
-    }
+    const err = new grpc.StatusBuilder().withCode(status.NOT_FOUND).withDetails('Pet Not Found').build()
     callback(err)
     return
   }
@@ -25,21 +23,24 @@ const createPet = (call, callback) => {
 const updatePet = (call, callback) => {
   const pet = db.updatePet(call.request)
   if (!pet) {
-    const err = {
-      message: 'Pet Not Found',
-      status: status.NOT_FOUND
-    }
-    callback(err)
+    const err = new grpc.StatusBuilder().withCode(status.NOT_FOUND).withDetails('Pet Not Found').build()
+    callback(err.build())
     return
   }
   callback(null, pet)
 }
 
 const deletePet = (call, callback) => {
-  const err = {
-    message: 'Service Not Implemented',
-    status: status.UNIMPLEMENTED
-  }
+  const err = new grpc.StatusBuilder().withCode(status.UNIMPLEMENTED).withDetails('Service Not Implemented').build()
+  callback(err)
+}
+
+const check = (call, callback) => {
+  callback(null, { status: 1 })
+}
+
+const watch = (call, callback) => {
+  const err = new grpc.StatusBuilder().withCode(status.UNIMPLEMENTED).withDetails('Service Not Implemented').build()
   callback(err)
 }
 
@@ -48,5 +49,7 @@ module.exports = {
   getPet,
   createPet,
   updatePet,
-  deletePet
+  deletePet,
+  check,
+  watch
 }

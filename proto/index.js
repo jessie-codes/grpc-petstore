@@ -2,10 +2,11 @@ const { resolve } = require('path')
 const { loadPackageDefinition } = require('grpc')
 const { loadSync } = require('@grpc/proto-loader')
 
-const PROTO_PATH = resolve(__dirname, 'petstore.proto')
+const PETSTORE_PROTO_PATH = resolve(__dirname, 'petstore.proto')
+const HEALTH_PROTO_PATH = resolve(__dirname, 'health.proto')
 
-const packageDefinition = loadSync(
-  PROTO_PATH,
+const petstorePackageDefinition = loadSync(
+  PETSTORE_PROTO_PATH,
   {
     keepCase: true,
     longs: String,
@@ -15,6 +16,21 @@ const packageDefinition = loadSync(
   }
 )
 
-const { petstore } = loadPackageDefinition(packageDefinition)
+const healthPackageDefinition = loadSync(
+  HEALTH_PROTO_PATH,
+  {
+    keepCase: true,
+    longs: String,
+    enums: String,
+    defaults: true,
+    oneofs: true
+  }
+)
 
-module.exports = petstore
+const { petstore } = loadPackageDefinition(petstorePackageDefinition)
+const { health } = loadPackageDefinition(healthPackageDefinition)
+
+module.exports = {
+  petstore,
+  health
+}

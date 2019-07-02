@@ -44,3 +44,9 @@ $ node client/index.js update-pet <id> <name> <availability>
 ```bash
 $ node client/index.js delete-pet <id>
 ```
+
+**Check the server health**
+
+```bash
+$ node client/index.js check-health
+```

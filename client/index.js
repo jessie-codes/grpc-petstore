@@ -1,11 +1,12 @@
 const { credentials, status } = require('grpc')
 const sade = require('sade')
-const { PetStore, Status } = require('../proto')
-const client = new PetStore('localhost:50051', credentials.createInsecure())
+const proto = require('../proto')
+const client = new proto.petstore.PetStore('localhost:50051', credentials.createInsecure())
+const health = new proto.health.Health('localhost:50051', credentials.createInsecure())
 
 const cli = sade('petstore')
 
-const statuses = Status.type.value.map(s => {
+const statuses = proto.petstore.Status.type.value.map(s => {
   return s.name
 })
 
@@ -95,6 +96,19 @@ cli
         process.exit(err.code)
       }
       console.log(pet)
+    })
+  })
+
+cli
+  .command('check-health')
+  .describe('Checks the health of the server')
+  .action(() => {
+    health.check({ service: 'petstore' }, (err, health) => {
+      if (err) {
+        console.log(err.details)
+        process.exit(err.code)
+      }
+      console.log(health)
     })
   })
 
