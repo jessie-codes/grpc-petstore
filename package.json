@@ -1,0 +1,30 @@
+{
+  "name": "grpc-petstore",
+  "version": "1.0.0",
+  "description": "GRPC petstore service",
+  "scripts": {
+    "server": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessie-codes/grpc-petstore.git"
+  },
+  "keywords": [
+    "grpc",
+    "tutorial",
+    "petstore"
+  ],
+  "author": "Jessie Barnett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jessie-codes/grpc-petstore/issues"
+  },
+  "homepage": "https://github.com/jessie-codes/grpc-petstore#readme",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.5.1",
+    "grpc": "^1.21.1",
+    "lowdb": "^1.0.0",
+    "sade": "^1.6.0",
+    "uuid": "^3.3.2"
+  }
+}

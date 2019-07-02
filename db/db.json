@@ -1,0 +1,21 @@
+{
+  "pets": [
+    {
+      "guid": "",
+      "name": "socks",
+      "status": "SOLD",
+      "id": "5dc5dde7-5345-49c3-adb8-f1a3b36783a7"
+    },
+    {
+      "guid": "",
+      "name": "socks",
+      "status": "SOLD",
+      "id": "5d44ce39-37fe-4d43-a0bc-4a46c2dab8b8"
+    },
+    {
+      "id": "1ffe6c72-cd02-4152-b1db-eb1d39859a06",
+      "name": "fluffy",
+      "status": "PENDING"
+    }
+  ]
+}

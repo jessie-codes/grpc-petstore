@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package petstore;
+
+enum Status {
+  AVAILABLE = 0;
+  PENDING = 1;
+  SOLD = 3;
+}
+
+message Pet {
+  string id = 1;
+  string name = 2;
+  Status status = 3;
+}
+
+message Pets {
+  repeated Pet pets = 1;
+}
+
+message Empty {}
+
+service PetStore {
+ rpc GetAll(Empty) returns (Pets) {}
+ rpc GetPet(Pet) returns (Pet) {}
+ rpc CreatePet(Pet) returns (Pet) {}
+ rpc UpdatePet(Pet) returns (Pet) {}
+ rpc DeletePet(Pet) returns (Empty) {}
+}
