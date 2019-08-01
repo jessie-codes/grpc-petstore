@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "GRPC petstore service",
   "scripts": {
-    "server": "node server/index.js"
+    "server": "node server/index.js",
+    "getPet": "node client/index.js get-pet 5dc5dde7-5345-49c3-adb8-f1a3b36783a7",
+    "createPet": "node client/index.js create-pet boots AVAILABLE",
+    "updatePet": "node client/index.js update-pet 5dc5dde7-5345-49c3-adb8-f1a3b36783a7 socks SOLD",
+    "deletePet": "node client/index.js delete-pet 5dc5dde7-5345-49c3-adb8-f1a3b36783a7"
   },
   "repository": {
     "type": "git",
