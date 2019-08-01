@@ -1,14 +1,12 @@
 {
   "pets": [
     {
-      "guid": "",
       "name": "socks",
       "status": "SOLD",
       "id": "5dc5dde7-5345-49c3-adb8-f1a3b36783a7"
     },
     {
-      "guid": "",
-      "name": "socks",
+      "name": "mittens",
       "status": "SOLD",
       "id": "5d44ce39-37fe-4d43-a0bc-4a46c2dab8b8"
     },
